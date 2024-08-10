@@ -11,6 +11,38 @@
 		5C32D55D2C6591430054DCD7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32D55C2C6591430054DCD7 /* ContentView.swift */; };
 		5C32D55F2C6591460054DCD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C32D55E2C6591460054DCD7 /* Assets.xcassets */; };
 		5C32D5622C6591460054DCD7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C32D5612C6591460054DCD7 /* Preview Assets.xcassets */; };
+		5C32D56B2C6591FA0054DCD7 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 5C32D5682C6591FA0054DCD7 /* .gitignore */; };
+		5C32D56C2C6591FA0054DCD7 /* AgoraManager+Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32D5692C6591FA0054DCD7 /* AgoraManager+Permissions.swift */; };
+		5C32D56F2C6592480054DCD7 /* AgoraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32D56D2C6592480054DCD7 /* AgoraManager.swift */; };
+		5C32D5702C6592480054DCD7 /* AgoraVideoCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32D56E2C6592480054DCD7 /* AgoraVideoCanvasView.swift */; };
+		5C32D5722C6592800054DCD7 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C32D5712C6592800054DCD7 /* config.json */; };
+		5C32D5752C6592D60054DCD7 /* AIAEC in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D5742C6592D60054DCD7 /* AIAEC */; };
+		5C32D5772C6592D60054DCD7 /* AIAECLL in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D5762C6592D60054DCD7 /* AIAECLL */; };
+		5C32D5792C6592D60054DCD7 /* AINS in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D5782C6592D60054DCD7 /* AINS */; };
+		5C32D57B2C6592D60054DCD7 /* AINSLL in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D57A2C6592D60054DCD7 /* AINSLL */; };
+		5C32D57D2C6592D60054DCD7 /* AudioBeauty in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D57C2C6592D60054DCD7 /* AudioBeauty */; };
+		5C32D57F2C6592D60054DCD7 /* ClearVision in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D57E2C6592D60054DCD7 /* ClearVision */; };
+		5C32D5812C6592D60054DCD7 /* ContentInspect in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D5802C6592D60054DCD7 /* ContentInspect */; };
+		5C32D5832C6592D60054DCD7 /* FaceCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D5822C6592D60054DCD7 /* FaceCapture */; };
+		5C32D5852C6592D60054DCD7 /* FaceDetection in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D5842C6592D60054DCD7 /* FaceDetection */; };
+		5C32D5872C6592D60054DCD7 /* LipSync in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D5862C6592D60054DCD7 /* LipSync */; };
+		5C32D5892C6592D70054DCD7 /* ReplayKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D5882C6592D70054DCD7 /* ReplayKit */; };
+		5C32D58B2C6592D70054DCD7 /* RtcBasic in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D58A2C6592D70054DCD7 /* RtcBasic */; };
+		5C32D58D2C6592D70054DCD7 /* SpatialAudio in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D58C2C6592D70054DCD7 /* SpatialAudio */; };
+		5C32D58F2C6592D70054DCD7 /* VQA in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D58E2C6592D70054DCD7 /* VQA */; };
+		5C32D5912C6592D70054DCD7 /* VideoAv1CodecDec in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D5902C6592D70054DCD7 /* VideoAv1CodecDec */; };
+		5C32D5932C6592D70054DCD7 /* VideoAv1CodecEnc in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D5922C6592D70054DCD7 /* VideoAv1CodecEnc */; };
+		5C32D5952C6592D70054DCD7 /* VideoCodecDec in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D5942C6592D70054DCD7 /* VideoCodecDec */; };
+		5C32D5972C6592D70054DCD7 /* VideoCodecEnc in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D5962C6592D70054DCD7 /* VideoCodecEnc */; };
+		5C32D5992C6592D70054DCD7 /* VirtualBackground in Frameworks */ = {isa = PBXBuildFile; productRef = 5C32D5982C6592D70054DCD7 /* VirtualBackground */; };
+		5C32D59B2C6593450054DCD7 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32D59A2C6593450054DCD7 /* AppConfig.swift */; };
+		5C32D5AA2C65944C0054DCD7 /* AgoraManager+Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32D5A92C65944C0054DCD7 /* AgoraManager+Token.swift */; };
+		5C32D5AC2C66D72D0054DCD7 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32D5AB2C66D72D0054DCD7 /* ChatView.swift */; };
+		5C32D5AE2C66DB260054DCD7 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32D5AD2C66DB260054DCD7 /* ToastView.swift */; };
+		5C32D5B12C66DB550054DCD7 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32D5B02C66DB550054DCD7 /* VisualEffectView.swift */; };
+		5C32D5B52C66DD090054DCD7 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32D5B42C66DD090054DCD7 /* View+Extensions.swift */; };
+		5C32D5B82C66E59D0054DCD7 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32D5B72C66E59D0054DCD7 /* AsyncImageView.swift */; };
+		5C32D5BA2C6705370054DCD7 /* PlaceHolderUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32D5B92C6705370054DCD7 /* PlaceHolderUserView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +51,19 @@
 		5C32D55C2C6591430054DCD7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5C32D55E2C6591460054DCD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C32D5612C6591460054DCD7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5C32D5682C6591FA0054DCD7 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		5C32D5692C6591FA0054DCD7 /* AgoraManager+Permissions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AgoraManager+Permissions.swift"; sourceTree = "<group>"; };
+		5C32D56D2C6592480054DCD7 /* AgoraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgoraManager.swift; sourceTree = "<group>"; };
+		5C32D56E2C6592480054DCD7 /* AgoraVideoCanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgoraVideoCanvasView.swift; sourceTree = "<group>"; };
+		5C32D5712C6592800054DCD7 /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
+		5C32D59A2C6593450054DCD7 /* AppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		5C32D5A92C65944C0054DCD7 /* AgoraManager+Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AgoraManager+Token.swift"; sourceTree = "<group>"; };
+		5C32D5AB2C66D72D0054DCD7 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		5C32D5AD2C66DB260054DCD7 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		5C32D5B02C66DB550054DCD7 /* VisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		5C32D5B42C66DD090054DCD7 /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		5C32D5B72C66E59D0054DCD7 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
+		5C32D5B92C6705370054DCD7 /* PlaceHolderUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderUserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +71,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C32D5972C6592D70054DCD7 /* VideoCodecEnc in Frameworks */,
+				5C32D5892C6592D70054DCD7 /* ReplayKit in Frameworks */,
+				5C32D57F2C6592D60054DCD7 /* ClearVision in Frameworks */,
+				5C32D5772C6592D60054DCD7 /* AIAECLL in Frameworks */,
+				5C32D5932C6592D70054DCD7 /* VideoAv1CodecEnc in Frameworks */,
+				5C32D58D2C6592D70054DCD7 /* SpatialAudio in Frameworks */,
+				5C32D5812C6592D60054DCD7 /* ContentInspect in Frameworks */,
+				5C32D58F2C6592D70054DCD7 /* VQA in Frameworks */,
+				5C32D5852C6592D60054DCD7 /* FaceDetection in Frameworks */,
+				5C32D57B2C6592D60054DCD7 /* AINSLL in Frameworks */,
+				5C32D5912C6592D70054DCD7 /* VideoAv1CodecDec in Frameworks */,
+				5C32D5752C6592D60054DCD7 /* AIAEC in Frameworks */,
+				5C32D5952C6592D70054DCD7 /* VideoCodecDec in Frameworks */,
+				5C32D57D2C6592D60054DCD7 /* AudioBeauty in Frameworks */,
+				5C32D5992C6592D70054DCD7 /* VirtualBackground in Frameworks */,
+				5C32D5872C6592D60054DCD7 /* LipSync in Frameworks */,
+				5C32D5832C6592D60054DCD7 /* FaceCapture in Frameworks */,
+				5C32D5792C6592D60054DCD7 /* AINS in Frameworks */,
+				5C32D58B2C6592D70054DCD7 /* RtcBasic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,8 +117,11 @@
 			children = (
 				5C32D55A2C6591430054DCD7 /* AstraDemoApp.swift */,
 				5C32D55C2C6591430054DCD7 /* ContentView.swift */,
+				5C32D5AB2C66D72D0054DCD7 /* ChatView.swift */,
 				5C32D55E2C6591460054DCD7 /* Assets.xcassets */,
+				5C32D5B62C66E54C0054DCD7 /* Utilities */,
 				5C32D5602C6591460054DCD7 /* Preview Content */,
+				5C32D56A2C6591FA0054DCD7 /* AgoraManager */,
 			);
 			path = AstraDemo;
 			sourceTree = "<group>";
@@ -65,6 +132,40 @@
 				5C32D5612C6591460054DCD7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5C32D56A2C6591FA0054DCD7 /* AgoraManager */ = {
+			isa = PBXGroup;
+			children = (
+				5C32D5712C6592800054DCD7 /* config.json */,
+				5C32D5682C6591FA0054DCD7 /* .gitignore */,
+				5C32D56D2C6592480054DCD7 /* AgoraManager.swift */,
+				5C32D5692C6591FA0054DCD7 /* AgoraManager+Permissions.swift */,
+				5C32D56E2C6592480054DCD7 /* AgoraVideoCanvasView.swift */,
+				5C32D59A2C6593450054DCD7 /* AppConfig.swift */,
+				5C32D5A92C65944C0054DCD7 /* AgoraManager+Token.swift */,
+			);
+			path = AgoraManager;
+			sourceTree = "<group>";
+		};
+		5C32D5AF2C66DB360054DCD7 /* SwiftUI+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5C32D5AD2C66DB260054DCD7 /* ToastView.swift */,
+				5C32D5B42C66DD090054DCD7 /* View+Extensions.swift */,
+				5C32D5B02C66DB550054DCD7 /* VisualEffectView.swift */,
+			);
+			path = "SwiftUI+Extensions";
+			sourceTree = "<group>";
+		};
+		5C32D5B62C66E54C0054DCD7 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				5C32D5AF2C66DB360054DCD7 /* SwiftUI+Extensions */,
+				5C32D5B72C66E59D0054DCD7 /* AsyncImageView.swift */,
+				5C32D5B92C6705370054DCD7 /* PlaceHolderUserView.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +184,27 @@
 			dependencies = (
 			);
 			name = AstraDemo;
+			packageProductDependencies = (
+				5C32D5742C6592D60054DCD7 /* AIAEC */,
+				5C32D5762C6592D60054DCD7 /* AIAECLL */,
+				5C32D5782C6592D60054DCD7 /* AINS */,
+				5C32D57A2C6592D60054DCD7 /* AINSLL */,
+				5C32D57C2C6592D60054DCD7 /* AudioBeauty */,
+				5C32D57E2C6592D60054DCD7 /* ClearVision */,
+				5C32D5802C6592D60054DCD7 /* ContentInspect */,
+				5C32D5822C6592D60054DCD7 /* FaceCapture */,
+				5C32D5842C6592D60054DCD7 /* FaceDetection */,
+				5C32D5862C6592D60054DCD7 /* LipSync */,
+				5C32D5882C6592D70054DCD7 /* ReplayKit */,
+				5C32D58A2C6592D70054DCD7 /* RtcBasic */,
+				5C32D58C2C6592D70054DCD7 /* SpatialAudio */,
+				5C32D58E2C6592D70054DCD7 /* VQA */,
+				5C32D5902C6592D70054DCD7 /* VideoAv1CodecDec */,
+				5C32D5922C6592D70054DCD7 /* VideoAv1CodecEnc */,
+				5C32D5942C6592D70054DCD7 /* VideoCodecDec */,
+				5C32D5962C6592D70054DCD7 /* VideoCodecEnc */,
+				5C32D5982C6592D70054DCD7 /* VirtualBackground */,
+			);
 			productName = AstraDemo;
 			productReference = 5C32D5572C6591430054DCD7 /* AstraDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +233,9 @@
 				Base,
 			);
 			mainGroup = 5C32D54E2C6591430054DCD7;
+			packageReferences = (
+				5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */,
+			);
 			productRefGroup = 5C32D5582C6591430054DCD7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,6 +251,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C32D5622C6591460054DCD7 /* Preview Assets.xcassets in Resources */,
+				5C32D5722C6592800054DCD7 /* config.json in Resources */,
+				5C32D56B2C6591FA0054DCD7 /* .gitignore in Resources */,
 				5C32D55F2C6591460054DCD7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,8 +264,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C32D5AA2C65944C0054DCD7 /* AgoraManager+Token.swift in Sources */,
+				5C32D56C2C6591FA0054DCD7 /* AgoraManager+Permissions.swift in Sources */,
+				5C32D5B52C66DD090054DCD7 /* View+Extensions.swift in Sources */,
 				5C32D55D2C6591430054DCD7 /* ContentView.swift in Sources */,
+				5C32D5702C6592480054DCD7 /* AgoraVideoCanvasView.swift in Sources */,
+				5C32D5AC2C66D72D0054DCD7 /* ChatView.swift in Sources */,
+				5C32D5B12C66DB550054DCD7 /* VisualEffectView.swift in Sources */,
+				5C32D59B2C6593450054DCD7 /* AppConfig.swift in Sources */,
+				5C32D56F2C6592480054DCD7 /* AgoraManager.swift in Sources */,
+				5C32D5AE2C66DB260054DCD7 /* ToastView.swift in Sources */,
+				5C32D5BA2C6705370054DCD7 /* PlaceHolderUserView.swift in Sources */,
 				5C32D55B2C6591430054DCD7 /* AstraDemoApp.swift in Sources */,
+				5C32D5B82C66E59D0054DCD7 /* AsyncImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +317,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -197,7 +336,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -242,6 +382,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -254,7 +395,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -275,11 +417,14 @@
 				DEVELOPMENT_TEAM = 5C7PJ9NG5T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Using camera";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Using mic for coversation";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,11 +449,14 @@
 				DEVELOPMENT_TEAM = 5C7PJ9NG5T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Using camera";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Using mic for coversation";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -344,6 +492,115 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AgoraIO/AgoraRtcEngine_iOS/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5C32D5742C6592D60054DCD7 /* AIAEC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = AIAEC;
+		};
+		5C32D5762C6592D60054DCD7 /* AIAECLL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = AIAECLL;
+		};
+		5C32D5782C6592D60054DCD7 /* AINS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = AINS;
+		};
+		5C32D57A2C6592D60054DCD7 /* AINSLL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = AINSLL;
+		};
+		5C32D57C2C6592D60054DCD7 /* AudioBeauty */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = AudioBeauty;
+		};
+		5C32D57E2C6592D60054DCD7 /* ClearVision */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = ClearVision;
+		};
+		5C32D5802C6592D60054DCD7 /* ContentInspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = ContentInspect;
+		};
+		5C32D5822C6592D60054DCD7 /* FaceCapture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = FaceCapture;
+		};
+		5C32D5842C6592D60054DCD7 /* FaceDetection */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = FaceDetection;
+		};
+		5C32D5862C6592D60054DCD7 /* LipSync */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = LipSync;
+		};
+		5C32D5882C6592D70054DCD7 /* ReplayKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = ReplayKit;
+		};
+		5C32D58A2C6592D70054DCD7 /* RtcBasic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = RtcBasic;
+		};
+		5C32D58C2C6592D70054DCD7 /* SpatialAudio */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = SpatialAudio;
+		};
+		5C32D58E2C6592D70054DCD7 /* VQA */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = VQA;
+		};
+		5C32D5902C6592D70054DCD7 /* VideoAv1CodecDec */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = VideoAv1CodecDec;
+		};
+		5C32D5922C6592D70054DCD7 /* VideoAv1CodecEnc */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = VideoAv1CodecEnc;
+		};
+		5C32D5942C6592D70054DCD7 /* VideoCodecDec */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = VideoCodecDec;
+		};
+		5C32D5962C6592D70054DCD7 /* VideoCodecEnc */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = VideoCodecEnc;
+		};
+		5C32D5982C6592D70054DCD7 /* VirtualBackground */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = VirtualBackground;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5C32D54F2C6591430054DCD7 /* Project object */;
 }

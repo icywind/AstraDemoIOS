@@ -1,0 +1,15 @@
+{
+    "uid": 0,
+    "channel": "agora_astra",
+    "appId": "00e97fd319264c1ea2be69a370bd712e",
+    "rtcToken": "",
+    "tokenUrl": "",
+    "product": "ils",
+    "signalingToken": "",
+    "encryptionMode": 7,
+    "salt": "",
+    "cipherKey": "",
+    "proxyUrl": "",
+    "proxyType": "none",
+    "screenShareId": 10001
+}
