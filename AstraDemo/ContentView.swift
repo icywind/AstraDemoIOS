@@ -36,6 +36,15 @@ struct ContentView: View {
                             .background(Color.blue)
                             .cornerRadius(10)
                     }
+                    
+                    NavigationLink(destination:
+                                   UtilTestView()) {
+                        Text("Util")
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                    }
                 }
             }
             .padding()

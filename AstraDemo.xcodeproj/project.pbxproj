@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		367B88F72C6D687300ACA7B7 /* ServerNetworkingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367B88F62C6D687300ACA7B7 /* ServerNetworkingModel.swift */; };
+		36F06AF82C6C37BC002FE004 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F06AF72C6C37BC002FE004 /* NetworkManager.swift */; };
+		36F06AFA2C6C391B002FE004 /* UtilFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F06AF92C6C391B002FE004 /* UtilFunctions.swift */; };
+		36F06AFC2C6C3F64002FE004 /* UtilTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F06AFB2C6C3F64002FE004 /* UtilTestView.swift */; };
 		5C32D55B2C6591430054DCD7 /* AstraDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32D55A2C6591430054DCD7 /* AstraDemoApp.swift */; };
 		5C32D55D2C6591430054DCD7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32D55C2C6591430054DCD7 /* ContentView.swift */; };
 		5C32D55F2C6591460054DCD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C32D55E2C6591460054DCD7 /* Assets.xcassets */; };
@@ -46,6 +50,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		367B88F62C6D687300ACA7B7 /* ServerNetworkingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerNetworkingModel.swift; sourceTree = "<group>"; };
+		36F06AF72C6C37BC002FE004 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		36F06AF92C6C391B002FE004 /* UtilFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilFunctions.swift; sourceTree = "<group>"; };
+		36F06AFB2C6C3F64002FE004 /* UtilTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilTestView.swift; sourceTree = "<group>"; };
 		5C32D5572C6591430054DCD7 /* AstraDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AstraDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C32D55A2C6591430054DCD7 /* AstraDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstraDemoApp.swift; sourceTree = "<group>"; };
 		5C32D55C2C6591430054DCD7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,6 +126,8 @@
 				5C32D55A2C6591430054DCD7 /* AstraDemoApp.swift */,
 				5C32D55C2C6591430054DCD7 /* ContentView.swift */,
 				5C32D5AB2C66D72D0054DCD7 /* ChatView.swift */,
+				36F06AFB2C6C3F64002FE004 /* UtilTestView.swift */,
+				367B88F62C6D687300ACA7B7 /* ServerNetworkingModel.swift */,
 				5C32D55E2C6591460054DCD7 /* Assets.xcassets */,
 				5C32D5B62C66E54C0054DCD7 /* Utilities */,
 				5C32D5602C6591460054DCD7 /* Preview Content */,
@@ -164,6 +174,8 @@
 				5C32D5AF2C66DB360054DCD7 /* SwiftUI+Extensions */,
 				5C32D5B72C66E59D0054DCD7 /* AsyncImageView.swift */,
 				5C32D5B92C6705370054DCD7 /* PlaceHolderUserView.swift */,
+				36F06AF72C6C37BC002FE004 /* NetworkManager.swift */,
+				36F06AF92C6C391B002FE004 /* UtilFunctions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -266,14 +278,18 @@
 			files = (
 				5C32D5AA2C65944C0054DCD7 /* AgoraManager+Token.swift in Sources */,
 				5C32D56C2C6591FA0054DCD7 /* AgoraManager+Permissions.swift in Sources */,
+				36F06AFA2C6C391B002FE004 /* UtilFunctions.swift in Sources */,
 				5C32D5B52C66DD090054DCD7 /* View+Extensions.swift in Sources */,
 				5C32D55D2C6591430054DCD7 /* ContentView.swift in Sources */,
 				5C32D5702C6592480054DCD7 /* AgoraVideoCanvasView.swift in Sources */,
+				36F06AFC2C6C3F64002FE004 /* UtilTestView.swift in Sources */,
 				5C32D5AC2C66D72D0054DCD7 /* ChatView.swift in Sources */,
 				5C32D5B12C66DB550054DCD7 /* VisualEffectView.swift in Sources */,
 				5C32D59B2C6593450054DCD7 /* AppConfig.swift in Sources */,
+				367B88F72C6D687300ACA7B7 /* ServerNetworkingModel.swift in Sources */,
 				5C32D56F2C6592480054DCD7 /* AgoraManager.swift in Sources */,
 				5C32D5AE2C66DB260054DCD7 /* ToastView.swift in Sources */,
+				36F06AF82C6C37BC002FE004 /* NetworkManager.swift in Sources */,
 				5C32D5BA2C6705370054DCD7 /* PlaceHolderUserView.swift in Sources */,
 				5C32D55B2C6591430054DCD7 /* AstraDemoApp.swift in Sources */,
 				5C32D5B82C66E59D0054DCD7 /* AsyncImageView.swift in Sources */,

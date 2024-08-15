@@ -176,16 +176,7 @@ open class AgoraManager: NSObject, ObservableObject {
     ) async -> Int32 {
         let userId = uid ?? AppConfig.shared.uid
         var token = AppConfig.shared.rtcToken
-        if !AppConfig.shared.tokenUrl.isEmpty {
-            do {
-                token = try await self.fetchToken(
-                    from: AppConfig.shared.tokenUrl, channel: channel,
-                    role: self.role, userId: userId
-                )
-            } catch {
-                await self.updateLabel(to: "token server fetch failed: \(error.localizedDescription)")
-            }
-        }
+
         return await self.joinChannel(
             channel, token: token, uid: userId, mediaOptions: mediaOptions
         )
