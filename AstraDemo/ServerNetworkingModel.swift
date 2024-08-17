@@ -69,6 +69,12 @@ struct AgoraRTCTokenResponse: Codable {
     let data: TokenDataClass
     let msg: String
 }
+/// A Codable struct representing the server response for commands like start,stop and ping
+struct AgoraServerCommandResponse: Codable {
+    let code: String // "0" or error code in ""
+    let data: Int    // non-zero if there is an error
+    let msg: String  // explains what went wrong if error occurs
+}
 
 struct TokenDataClass: Codable {
     let appId: String

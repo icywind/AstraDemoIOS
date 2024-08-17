@@ -81,30 +81,14 @@ public extension AgoraManager {
     func rtcEngine(
         _ engine: AgoraRtcEngineKit, tokenPrivilegeWillExpire token: String
     ) {
-        let config =  GenAgoraDataConfig(
-            userId: 0, channel: getRandomChannel())
-        NetworkManager.ApiRequestToken() { [self]
-            result in
-            switch result {
-            case .success(let data):
-                // Handle the success case
-                print("Data received: \(data)")
-                // You can process the data here
-                HandleTokenResponse(data: data)
-            case .failure(let error):
-                // Handle the error case
-                print("Error occurred: \(error.localizedDescription)")
-                // You can handle the error here
+        Task {
+            do {
+                let newToken = try await NetworkManager.ApiRequestToken()
+                print("token = \(token) renewed = \(newToken)")
+                self.agoraEngine.renewToken(newToken)
+            } catch let error {
+                print(error.localizedDescription)
             }
-        }
-    }
-    
-    func HandleTokenResponse (data: Data) -> Void {
-        do {
-            let tokenResponse = try JSONDecoder().decode(AgoraRTCTokenResponse.self, from: data)
-            print(tokenResponse)
-        } catch {
-            print("token retrieval failed!")
         }
     }
 }

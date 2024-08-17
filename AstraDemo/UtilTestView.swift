@@ -61,68 +61,39 @@ struct UtilTestView: View {
             ResultText = String(getRandomUserId())
             break;
         case .RandomChannel:
-            ResultText = String(getRandomChannel())
+            AppConfig.shared.channel = String(getRandomChannel())
+            ResultText = AppConfig.shared.channel
             break;
         case .UUID:
             ResultText = String(genUUID())
             print(ResultText)
             break;
         case .TokenGen:
-            NetworkManager.ApiRequestToken() {
-                  result in
-                    switch result {
-                    case .success(let data):
-                        // Handle the success case
-                        print("Data received: \(data)")
-                        HandleTokenResponse(data: data)
-                    case .failure(let error):
-                        // Handle the error case
-                        print("Error occurred: \(error.localizedDescription)")
-                        // You can handle the error here
-                    }
+            Task {
+                do {
+                    let token = try await NetworkManager.ApiRequestToken()
+                    print("token = \(token)")
+                } catch let error {
+                    print(error.localizedDescription)
                 }
+            }
             break;
         case .Start:
-            NetworkManager.ApiRequestStartService() {
-                result in
-                switch result {
-                case .success(let data):
-                    // Handle the success case
-                    print("Data received: \(data)")
-                    
-                case .failure(let error):
-                    // Handle the error case
-                    print("Error occurred: \(error.localizedDescription)")
-                }
+            Task {
+                let _ = try await NetworkManager.ApiRequestStartService()
+                
             }
             break;
         case .Stop:
-            NetworkManager.ApiRequestStopService() {
-                result in
-                switch result {
-                case .success(let data):
-                    // Handle the success case
-                    print("Data received: \(data)")
-                    
-                case .failure(let error):
-                    // Handle the error case
-                    print("Error occurred: \(error.localizedDescription)")
-                }
+            Task {
+                let _ = try await NetworkManager.ApiRequestStopService()
             }
             break;
         case .Ping:
-            NetworkManager.ApiRequestPingService() {
-                result in
-                switch result {
-                case .success(let data):
-                    // Handle the success case
-                    print("Data received: \(data)")
-                    
-                case .failure(let error):
-                    // Handle the error case
-                    print("Error occurred: \(error.localizedDescription)")
-                }
+            Task {
+                let _ = try await NetworkManager.ApiRequestPingService()
             }
+
             break;
         }
     }

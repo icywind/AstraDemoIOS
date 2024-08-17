@@ -169,18 +169,18 @@ open class AgoraManager: NSObject, ObservableObject {
     ///   - channel: Name of the channel to join.
     ///   - uid: User ID of the local user. This can be 0 to allow the engine to automatically assign an ID.
     /// - Returns: Error code, 0 = success, &lt; 0 = failure.
-    @discardableResult
-    internal func joinChannel(
-        _ channel: String, uid: UInt? = nil,
-        mediaOptions: AgoraRtcChannelMediaOptions? = nil
-    ) async -> Int32 {
-        let userId = uid ?? AppConfig.shared.uid
-        var token = AppConfig.shared.rtcToken
-
-        return await self.joinChannel(
-            channel, token: token, uid: userId, mediaOptions: mediaOptions
-        )
-    }
+//    @discardableResult
+//    internal func joinChannel(
+//        _ channel: String, uid: UInt? = nil,
+//        mediaOptions: AgoraRtcChannelMediaOptions? = nil
+//    ) async -> Int32 {
+//        let userId = uid ?? AppConfig.shared.uid
+//        var token = AppConfig.shared.rtcToken
+//
+//        return await self.joinChannel(
+//            channel, token: token, uid: userId, mediaOptions: mediaOptions
+//        )
+//    }
 
     /// Leaves the channel and stops the preview for the session.
     ///

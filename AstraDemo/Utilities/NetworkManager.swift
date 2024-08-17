@@ -9,26 +9,22 @@ import Foundation
 
 let REQUEST_URL = "http://localhost:8080"
 
-struct GenAgoraDataConfig: Codable {
-    let userId: UInt
-    let channel: String
-}
-
 open class NetworkManager {
-    
-    /// Description
-    /// - Parameters:
-    ///   - config: required configuration data (uid, channel_name, and a request_id)
-    ///   - completion: clousure to handle the request result as Data and Error pair
-    static func ApiRequestToken(completion: @escaping (Result<Data, Error>) -> Void) {
+    /// Description - ApiRequestToken
+    ///    Request the server to generate a token based on channel and uid.
+    ///  The caller should handle the exception from this networking action.
+    /// - Returns: rtc token string
+    static func ApiRequestToken() async throws -> String {
         let config = AppConfig.shared;
         let data = AgoraRTCTokenRequest(requestId: genUUID(),
                                         channelName: config.channel,
                                         uid: config.uid)
-        ServerApiRequest(apiurl: "\(REQUEST_URL)/token/generate", data: data, completion: completion)
+        let response = try await ServerApiRequest(apiurl: "\(REQUEST_URL)/token/generate", data: data)
+        let decoded = try JSONDecoder().decode(AgoraRTCTokenResponse.self, from: response)
+        return decoded.data.token
     }
     
-    static func ApiRequestStartService(completion: @escaping (Result<Data, Error>) -> Void) {
+    static func ApiRequestStartService() async throws -> Data {
         let config = AppConfig.shared;
         let data = ServiceStartRequest(requestId: genUUID(),
                                        channelName: config.channel,
@@ -36,47 +32,44 @@ open class NetworkManager {
                                        openaiProxyUrl: config.openaiProxyUrl,
                                        remoteStreamId: config.uid,
                                        voiceType: config.voiceType.description)
-        ServerApiRequest(apiurl: "\(REQUEST_URL)/start", data: data, completion: completion)
+        return try await ServerApiRequest(apiurl: "\(REQUEST_URL)/start", data: data)
+        
     }
     
-    static func ApiRequestStopService(completion: @escaping (Result<Data, Error>) -> Void) {
+    static func ApiRequestStopService() async throws -> Data {
         let config = AppConfig.shared;
         let data = ServiceStopRequest(requestId: genUUID(),
-                                        channelName: config.channel)
-        ServerApiRequest(apiurl: "\(REQUEST_URL)/stop", data: data, completion: completion)
+                                      channelName: config.channel)
+        return try await ServerApiRequest(apiurl: "\(REQUEST_URL)/stop", data: data)
     }
     
-    static func ApiRequestPingService(completion: @escaping (Result<Data, Error>) -> Void) {
+    static func ApiRequestPingService() async throws -> Data {
         let config = AppConfig.shared;
         let data = ServicePingRequest(requestId: genUUID(),
-                                        channelName: config.channel)
-        ServerApiRequest(apiurl: "\(REQUEST_URL)/ping", data: data, completion: completion)
+                                      channelName: config.channel)
+        return try await ServerApiRequest(apiurl: "\(REQUEST_URL)/ping", data: data)
     }
     
-    private static func ServerApiRequest(apiurl:String, data: Codable, completion: @escaping (Result<Data, Error>) -> Void) {
+    private static func ServerApiRequest(apiurl:String, data: Codable) async throws -> Data {
         let url = URL(string:apiurl)!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        do {
             request.httpBody = try JSONEncoder().encode(data)
-        } catch {
-            print("Failed to serialize data: \(error)")
-            return
-        }
         
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                completion(.failure(error))
-            } else if let data = data {
-                if let str = String(data: data, encoding: .utf8) {
-                    print("Successfully decoded: \(str)")
+        return try await withCheckedThrowingContinuation { continuation in
+            let task = URLSession.shared.dataTask(with: request) { (data1, response, error) in
+                if let error = error {
+                    continuation.resume(with: .failure(error))
+                } else if let data = data1 {
+                    if let str = String(data: data, encoding: .utf8) {
+                        print("Successfully decoded: \(str)")
+                    }
+                    continuation.resume(with: .success(data))
                 }
-                completion(.success(data))
             }
+            task.resume()
         }
-        
-        task.resume()
     }
 }
