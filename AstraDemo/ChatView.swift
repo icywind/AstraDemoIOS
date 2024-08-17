@@ -28,12 +28,16 @@ struct ChatView: View {
                     // Show the video feeds for each participant.
                     ForEach(Array(agoraManager.allUsers), id: \.self) { uid in
                         Group {
-                            if (uid == agoraManager.localUserId) {
+                            if let pub = agoraManager.userVideoPublishing[uid] {
+                                if (pub) {
+                                    AgoraVideoCanvasView(manager: agoraManager, uid: uid)
+                                        .aspectRatio(contentMode: .fit).cornerRadius(10)
+                                } else {
+                                    PlaceHolderUserView(user: uid)
+                                }
+                            } else {
                                 // Placeholder
                                 PlaceHolderUserView(user: uid)
-                            } else {
-                                AgoraVideoCanvasView(manager: agoraManager, uid: uid)
-                                    .aspectRatio(contentMode: .fit).cornerRadius(10)
                             }
                         }
                     }
@@ -42,7 +46,20 @@ struct ChatView: View {
             ToastView(message: $agoraManager.label)
         }.onAppear { // Note this onAppear is an async extension
             let channel = AppConfig.shared.channel
-            let token = AppConfig.shared.rtcToken
+            var token = AppConfig.shared.rtcToken;
+            
+            // if intended AppID is token-enable, then the config file should
+            // has one non empty entry (copied from console)
+            // We will use the server generated version to avoid manual entry
+            // from now on.
+            if (token != nil && token != "") {
+                do {
+                    token = try await NetworkManager.ApiRequestToken()
+                } catch let error {
+                    print("ApiRequestToken:\(error)")
+                    return
+                }
+            }
             let uid = AppConfig.shared.uid
             switch AppConfig.shared.product {
             case .rtc:

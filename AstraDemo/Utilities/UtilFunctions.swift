@@ -53,3 +53,13 @@ func normalizeFrequencies(frequencies: [Float]) -> [Float] {
 func genUUID() -> String {
     return UUID().uuidString
 }
+
+struct Environment {
+    func isRunningOnSimulator() -> Bool {
+        #if targetEnvironment(simulator)
+           return true
+        #else
+           return false
+        #endif
+    }
+}

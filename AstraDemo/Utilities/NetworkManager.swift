@@ -30,10 +30,9 @@ open class NetworkManager {
                                        channelName: config.channel,
                                        agoraAsrLanguage: config.agoraAsrLanguage,
                                        openaiProxyUrl: config.openaiProxyUrl,
-                                       remoteStreamId: config.uid,
+                                       remoteStreamId: config.remoteStreamId,
                                        voiceType: config.voiceType.description)
         return try await ServerApiRequest(apiurl: "\(REQUEST_URL)/start", data: data)
-        
     }
     
     static func ApiRequestStopService() async throws -> Data {

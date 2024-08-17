@@ -26,6 +26,7 @@ open class AgoraManager: NSObject, ObservableObject {
 
     /// The set of all users in the channel.
     @Published public var allUsers: Set<UInt> = []
+    @Published public var userVideoPublishing: Dictionary<UInt, Bool> = [:]
 
     @Published var label: String?
 
@@ -252,6 +253,7 @@ extension AgoraManager: AgoraRtcEngineDelegate {
     ///
     /// This method adds the remote user to the `allUsers` set.
     open func rtcEngine(_ engine: AgoraRtcEngineKit, didJoinedOfUid uid: UInt, elapsed: Int) {
+        print ("User \(uid) joined.")
         self.allUsers.insert(uid)
     }
     
@@ -266,5 +268,42 @@ extension AgoraManager: AgoraRtcEngineDelegate {
     /// This method removes the remote user from the `allUsers` set.
     open func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid: UInt, reason: AgoraUserOfflineReason) {
         self.allUsers.remove(uid)
+        self.userVideoPublishing.removeValue(forKey: uid)
+    }
+    
+    open func rtcEngine(_ engine: AgoraRtcEngineKit, localVideoStateChangedOf state: AgoraVideoLocalState, reason: AgoraLocalVideoStreamReason, sourceType: AgoraVideoSourceType) {
+        print("localVideoStateChangedOf: \(state) \(reason)")
+        switch(state) {
+        case .encoding:
+            userVideoPublishing[localUserId] = true
+            break;
+        case .stopped:
+            userVideoPublishing[localUserId] = false
+            break
+        case .failed:
+            userVideoPublishing[localUserId] = false
+            break;
+        default:
+            break;
+        }
+     }
+    
+    open func rtcEngine( _ engine: AgoraRtcEngineKit,
+        remoteVideoStateChangedOfUid uid: UInt,
+        state: AgoraVideoRemoteState,
+        reason: AgoraVideoRemoteReason,
+        elapsed: Int
+    ) {
+        print("remoteVideoStateChangedOfUid:\(uid) \(state) \(reason)")
+        switch(state) {
+        case .decoding:
+            userVideoPublishing[uid] = true;
+            break;
+        case .stopped:
+            userVideoPublishing[uid] = false;
+            break;
+        default:
+            break;
+        }
     }
 }
