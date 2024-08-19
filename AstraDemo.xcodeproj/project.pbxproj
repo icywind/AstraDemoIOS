@@ -126,8 +126,10 @@
 				5C32D55A2C6591430054DCD7 /* AstraDemoApp.swift */,
 				5C32D55C2C6591430054DCD7 /* ContentView.swift */,
 				5C32D5AB2C66D72D0054DCD7 /* ChatView.swift */,
+				5C32D5B92C6705370054DCD7 /* PlaceHolderUserView.swift */,
 				36F06AFB2C6C3F64002FE004 /* UtilTestView.swift */,
 				367B88F62C6D687300ACA7B7 /* ServerNetworkingModel.swift */,
+				36F06AF72C6C37BC002FE004 /* NetworkManager.swift */,
 				5C32D55E2C6591460054DCD7 /* Assets.xcassets */,
 				5C32D5B62C66E54C0054DCD7 /* Utilities */,
 				5C32D5602C6591460054DCD7 /* Preview Content */,
@@ -173,8 +175,6 @@
 			children = (
 				5C32D5AF2C66DB360054DCD7 /* SwiftUI+Extensions */,
 				5C32D5B72C66E59D0054DCD7 /* AsyncImageView.swift */,
-				5C32D5B92C6705370054DCD7 /* PlaceHolderUserView.swift */,
-				36F06AF72C6C37BC002FE004 /* NetworkManager.swift */,
 				36F06AF92C6C391B002FE004 /* UtilFunctions.swift */,
 			);
 			path = Utilities;

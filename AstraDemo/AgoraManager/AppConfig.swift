@@ -41,6 +41,8 @@ public struct AppConfig: Codable {
     var rtcToken: String?
     /// Choose product type from "rtc", "ilr", "voice". See ``RtcProducts``.
     var product: RtcProducts
+    /// The base URL of the server
+    var serverBaseURL : String
 }
 
 enum RtcProducts: String, CaseIterable, Codable {

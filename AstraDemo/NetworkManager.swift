@@ -7,8 +7,6 @@
 
 import Foundation
 
-let REQUEST_URL = "http://localhost:8080"
-
 open class NetworkManager {
     /// Description - ApiRequestToken
     ///    Request the server to generate a token based on channel and uid.
@@ -19,7 +17,8 @@ open class NetworkManager {
         let data = AgoraRTCTokenRequest(requestId: genUUID(),
                                         channelName: config.channel,
                                         uid: config.uid)
-        let response = try await ServerApiRequest(apiurl: "\(REQUEST_URL)/token/generate", data: data)
+        let endpoint = config.serverBaseURL + "/token/generate"
+        let response = try await ServerApiRequest(apiurl:endpoint, data: data)
         let decoded = try JSONDecoder().decode(AgoraRTCTokenResponse.self, from: response)
         return decoded.data.token
     }
@@ -32,21 +31,24 @@ open class NetworkManager {
                                        openaiProxyUrl: config.openaiProxyUrl,
                                        remoteStreamId: config.remoteStreamId,
                                        voiceType: config.voiceType.description)
-        return try await ServerApiRequest(apiurl: "\(REQUEST_URL)/start", data: data)
+        let endpoint = config.serverBaseURL + "/start"
+        return try await ServerApiRequest(apiurl: endpoint, data: data)
     }
     
     static func ApiRequestStopService() async throws -> Data {
         let config = AppConfig.shared;
         let data = ServiceStopRequest(requestId: genUUID(),
                                       channelName: config.channel)
-        return try await ServerApiRequest(apiurl: "\(REQUEST_URL)/stop", data: data)
+        let endpoint = config.serverBaseURL + "/stop"
+        return try await ServerApiRequest(apiurl: endpoint, data: data)
     }
     
     static func ApiRequestPingService() async throws -> Data {
         let config = AppConfig.shared;
         let data = ServicePingRequest(requestId: genUUID(),
                                       channelName: config.channel)
-        return try await ServerApiRequest(apiurl: "\(REQUEST_URL)/ping", data: data)
+        let endpoint = config.serverBaseURL + "/ping"
+        return try await ServerApiRequest(apiurl: endpoint, data: data)
     }
     
     private static func ServerApiRequest(apiurl:String, data: Codable) async throws -> Data {

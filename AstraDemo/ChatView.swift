@@ -45,35 +45,9 @@ struct ChatView: View {
             }.background(Color.cyan)
             ToastView(message: $agoraManager.label)
         }.onAppear { // Note this onAppear is an async extension
-            let channel = AppConfig.shared.channel
-            var token = AppConfig.shared.rtcToken;
-            
-            // if intended AppID is token-enable, then the config file should
-            // has one non empty entry (copied from console)
-            // We will use the server generated version to avoid manual entry
-            // from now on.
-            if (token != nil && token != "") {
-                do {
-                    token = try await NetworkManager.ApiRequestToken()
-                } catch let error {
-                    print("ApiRequestToken:\(error)")
-                    return
-                }
-            }
-            let uid = AppConfig.shared.uid
-            switch AppConfig.shared.product {
-            case .rtc:
-                await agoraManager.joinVideoCall(channel, token: token, uid: uid)
-            case .ils:
-                await agoraManager.joinBroadcastStream(
-                    channel, token: token, uid: uid,
-                    isBroadcaster: true
-                )
-            case .voice:
-                await agoraManager.joinVoiceCall(channel, token: token, uid: uid)
-            }
+            await agoraManager.startSession()
         }.onDisappear {
-            agoraManager.leaveChannel(leaveChannelBlock: nil, destroyInstance: false)
+            agoraManager.stopSession()
         }
     }
 }
