@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ChatView: View {
     @State var _preview = false
+    let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
     
     init(channelId: String) {
         AppConfig.shared.channel = channelId
@@ -44,9 +45,14 @@ struct ChatView: View {
                 }.padding(20)
             }.background(Color.cyan)
             ToastView(message: $agoraManager.label)
+                .onReceive(timer) { time in
+                    print("The time is now \(time)")
+                    agoraManager.pingSession()
+                }
         }.onAppear { // Note this onAppear is an async extension
             await agoraManager.startSession()
         }.onDisappear {
+            timer.upstream.connect().cancel()
             agoraManager.stopSession()
         }
     }

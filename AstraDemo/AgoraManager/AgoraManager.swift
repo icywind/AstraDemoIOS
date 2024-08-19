@@ -1,8 +1,9 @@
 //
 //  AgoraManager.swift
-//  Docs-Examples
+//  AstraDemo
 //
-//  Created by Max Cobb on 03/04/2023.
+//  Created by Rick Cheng on 8/13/24.
+//  Original reference Docs-Examples
 //
 
 import AgoraRtcKit
@@ -52,7 +53,71 @@ open class AgoraManager: NSObject, ObservableObject {
         eng.setClientRole(role)
         return eng
     }
+    
+    @discardableResult
+    open func startSession() async -> Int32 {
+        let channel = AppConfig.shared.channel
+        var token = AppConfig.shared.rtcToken;
+        
+        // if intended AppID is token-enable, then the config file should
+        // has one non empty entry (copied from console)
+        // We will use the server generated version to avoid manual entry
+        // from now on.
+        if (token != nil && token != "") {
+            do {
+                token = try await NetworkManager.ApiRequestToken()
+            } catch let error {
+                print("ApiRequestToken:\(error)")
+                return -1;
+            }
+        }
+        let uid = AppConfig.shared.uid
+        var status : Int32 = 0
+        switch AppConfig.shared.product {
+        case .rtc:
+            status = await joinVideoCall(channel, token: token, uid: uid)
+        case .ils:
+            status = await joinBroadcastStream(
+                channel, token: token, uid: uid,
+                isBroadcaster: true
+            )
+        case .voice:
+            status = await joinVoiceCall(channel, token: token, uid: uid)
+        }
+        
+        if(status == 0) {
+            do {
+                let _ = try await NetworkManager.ApiRequestStartService()
+            } catch let error {
+                print ("Error: \(error.localizedDescription)")
+                status = -2
+            }
+        }
+        return status
+    }
 
+    @discardableResult
+    open func stopSession() -> Int32 {
+        Task {
+            do {
+                let _ = try await NetworkManager.ApiRequestStopService()
+            } catch let error {
+                print ("Error: \(error.localizedDescription)")
+            }
+        }
+        return leaveChannel(leaveChannelBlock: nil, destroyInstance: false)
+    }
+    
+    open func pingSession() -> Void {
+        Task {
+            do {
+                let _ = try await NetworkManager.ApiRequestPingService()
+            } catch let error {
+                print ("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
     /// Joins a channel, starting the connection to an RTC session.
     /// - Parameters:
     ///   - channel: Name of the channel to join.
@@ -161,27 +226,6 @@ open class AgoraManager: NSObject, ObservableObject {
             uid: uid, mediaOptions: opt
         )
     }
-
-    /// This method is used by this app specifically. If there is a tokenURL,
-    /// it will attempt to retrieve a token from there.
-    /// Otherwise it will simply apply the provided token in config.json or nil.
-    ///
-    /// - Parameters:
-    ///   - channel: Name of the channel to join.
-    ///   - uid: User ID of the local user. This can be 0 to allow the engine to automatically assign an ID.
-    /// - Returns: Error code, 0 = success, &lt; 0 = failure.
-//    @discardableResult
-//    internal func joinChannel(
-//        _ channel: String, uid: UInt? = nil,
-//        mediaOptions: AgoraRtcChannelMediaOptions? = nil
-//    ) async -> Int32 {
-//        let userId = uid ?? AppConfig.shared.uid
-//        var token = AppConfig.shared.rtcToken
-//
-//        return await self.joinChannel(
-//            channel, token: token, uid: userId, mediaOptions: mediaOptions
-//        )
-//    }
 
     /// Leaves the channel and stops the preview for the session.
     ///
