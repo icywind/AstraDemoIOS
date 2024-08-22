@@ -22,10 +22,13 @@ struct ChatView: View {
 
     public var body: some View {
         // Show a scrollable view of video feeds for all participants.
-        ZStack {
-            ScrollView {
-                Text("Channel:" + AppConfig.shared.channel).padding(20)
-                VStack {
+        VStack {
+            HStack {
+                Text("Channel:").foregroundColor(.black).font(.title)
+                Text(AppConfig.shared.channel).foregroundColor(.blue).font(.title)
+            }.padding(20)
+            let columns = Array(repeating: GridItem(.flexible()), count: 2)
+            LazyVGrid(columns: columns, spacing: 20) {
                     // Show the video feeds for each participant.
                     ForEach(Array(agoraManager.allUsers), id: \.self) { uid in
                         Group {
@@ -42,19 +45,30 @@ struct ChatView: View {
                             }
                         }
                     }
-                }.padding(20)
-            }.background(Color.cyan)
+            }//.padding(20)
+            TranscriptionView(
+                messages: agoraManager.messages,
+                    speakerA: "Agent",
+                    speakerB: "You"
+            ).scaledToFit()
             ToastView(message: $agoraManager.label)
-                .onReceive(timer) { time in
-                    print("The time is now \(time)")
+            .onReceive(timer) { time in
+                print("The time is now \(time)")
+                if (!_preview) {
                     agoraManager.pingSession()
                 }
+            }
         }.onAppear { // Note this onAppear is an async extension
-            await agoraManager.startSession()
+            if (!_preview) {
+                await agoraManager.startSession(withAI: true)
+            }
         }.onDisappear {
             timer.upstream.connect().cancel()
-            agoraManager.stopSession()
-        }
+            if (!_preview) {
+                agoraManager.stopSession()
+            }
+        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+           
     }
 }
 

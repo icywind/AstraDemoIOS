@@ -64,9 +64,9 @@ open class NetworkManager {
                 if let error = error {
                     continuation.resume(with: .failure(error))
                 } else if let data = data1 {
-                    if let str = String(data: data, encoding: .utf8) {
-                        print("Successfully decoded: \(str)")
-                    }
+//                    if let str = String(data: data, encoding: .utf8) {
+//                        print("Successfully decoded: \(str)")
+//                    }
                     continuation.resume(with: .success(data))
                 }
             }

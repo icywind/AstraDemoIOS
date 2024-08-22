@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		367B88F72C6D687300ACA7B7 /* ServerNetworkingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367B88F62C6D687300ACA7B7 /* ServerNetworkingModel.swift */; };
+		365EAAA52C75902C002039E3 /* SttMessage.proto in Sources */ = {isa = PBXBuildFile; fileRef = 365EAAA42C75902C002039E3 /* SttMessage.proto */; };
+		365EAAA72C759224002039E3 /* ServerNetworkingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365EAAA62C759224002039E3 /* ServerNetworkingModel.swift */; };
+		365EAAA92C759259002039E3 /* SttMessage.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365EAAA82C759259002039E3 /* SttMessage.pb.swift */; };
+		365EAAAC2C75939D002039E3 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 365EAAAB2C75939D002039E3 /* SwiftProtobuf */; };
+		365EAAAE2C75939D002039E3 /* SwiftProtobufPluginLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 365EAAAD2C75939D002039E3 /* SwiftProtobufPluginLibrary */; };
+		365EAAB02C768A97002039E3 /* TranscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365EAAAF2C768A97002039E3 /* TranscriptionView.swift */; };
+		365EAAB22C76A61F002039E3 /* StreamTextProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365EAAB12C76A61F002039E3 /* StreamTextProcessor.swift */; };
 		36F06AF82C6C37BC002FE004 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F06AF72C6C37BC002FE004 /* NetworkManager.swift */; };
 		36F06AFA2C6C391B002FE004 /* UtilFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F06AF92C6C391B002FE004 /* UtilFunctions.swift */; };
 		36F06AFC2C6C3F64002FE004 /* UtilTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F06AFB2C6C3F64002FE004 /* UtilTestView.swift */; };
@@ -50,7 +56,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		367B88F62C6D687300ACA7B7 /* ServerNetworkingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerNetworkingModel.swift; sourceTree = "<group>"; };
+		365EAAA42C75902C002039E3 /* SttMessage.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = SttMessage.proto; sourceTree = "<group>"; };
+		365EAAA62C759224002039E3 /* ServerNetworkingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerNetworkingModel.swift; sourceTree = "<group>"; };
+		365EAAA82C759259002039E3 /* SttMessage.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SttMessage.pb.swift; sourceTree = "<group>"; };
+		365EAAAF2C768A97002039E3 /* TranscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionView.swift; sourceTree = "<group>"; };
+		365EAAB12C76A61F002039E3 /* StreamTextProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamTextProcessor.swift; sourceTree = "<group>"; };
 		36F06AF72C6C37BC002FE004 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		36F06AF92C6C391B002FE004 /* UtilFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilFunctions.swift; sourceTree = "<group>"; };
 		36F06AFB2C6C3F64002FE004 /* UtilTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilTestView.swift; sourceTree = "<group>"; };
@@ -82,11 +92,13 @@
 				5C32D5972C6592D70054DCD7 /* VideoCodecEnc in Frameworks */,
 				5C32D5892C6592D70054DCD7 /* ReplayKit in Frameworks */,
 				5C32D57F2C6592D60054DCD7 /* ClearVision in Frameworks */,
+				365EAAAC2C75939D002039E3 /* SwiftProtobuf in Frameworks */,
 				5C32D5772C6592D60054DCD7 /* AIAECLL in Frameworks */,
 				5C32D5932C6592D70054DCD7 /* VideoAv1CodecEnc in Frameworks */,
 				5C32D58D2C6592D70054DCD7 /* SpatialAudio in Frameworks */,
 				5C32D5812C6592D60054DCD7 /* ContentInspect in Frameworks */,
 				5C32D58F2C6592D70054DCD7 /* VQA in Frameworks */,
+				365EAAAE2C75939D002039E3 /* SwiftProtobufPluginLibrary in Frameworks */,
 				5C32D5852C6592D60054DCD7 /* FaceDetection in Frameworks */,
 				5C32D57B2C6592D60054DCD7 /* AINSLL in Frameworks */,
 				5C32D5912C6592D70054DCD7 /* VideoAv1CodecDec in Frameworks */,
@@ -104,6 +116,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		365EAAA32C759000002039E3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				365EAAA42C75902C002039E3 /* SttMessage.proto */,
+				365EAAA82C759259002039E3 /* SttMessage.pb.swift */,
+				365EAAA62C759224002039E3 /* ServerNetworkingModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		5C32D54E2C6591430054DCD7 = {
 			isa = PBXGroup;
 			children = (
@@ -127,8 +149,9 @@
 				5C32D55C2C6591430054DCD7 /* ContentView.swift */,
 				5C32D5AB2C66D72D0054DCD7 /* ChatView.swift */,
 				5C32D5B92C6705370054DCD7 /* PlaceHolderUserView.swift */,
+				365EAAAF2C768A97002039E3 /* TranscriptionView.swift */,
 				36F06AFB2C6C3F64002FE004 /* UtilTestView.swift */,
-				367B88F62C6D687300ACA7B7 /* ServerNetworkingModel.swift */,
+				365EAAA32C759000002039E3 /* Models */,
 				36F06AF72C6C37BC002FE004 /* NetworkManager.swift */,
 				5C32D55E2C6591460054DCD7 /* Assets.xcassets */,
 				5C32D5B62C66E54C0054DCD7 /* Utilities */,
@@ -176,6 +199,7 @@
 				5C32D5AF2C66DB360054DCD7 /* SwiftUI+Extensions */,
 				5C32D5B72C66E59D0054DCD7 /* AsyncImageView.swift */,
 				36F06AF92C6C391B002FE004 /* UtilFunctions.swift */,
+				365EAAB12C76A61F002039E3 /* StreamTextProcessor.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -216,6 +240,8 @@
 				5C32D5942C6592D70054DCD7 /* VideoCodecDec */,
 				5C32D5962C6592D70054DCD7 /* VideoCodecEnc */,
 				5C32D5982C6592D70054DCD7 /* VirtualBackground */,
+				365EAAAB2C75939D002039E3 /* SwiftProtobuf */,
+				365EAAAD2C75939D002039E3 /* SwiftProtobufPluginLibrary */,
 			);
 			productName = AstraDemo;
 			productReference = 5C32D5572C6591430054DCD7 /* AstraDemo.app */;
@@ -247,6 +273,7 @@
 			mainGroup = 5C32D54E2C6591430054DCD7;
 			packageReferences = (
 				5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */,
+				365EAAAA2C75939D002039E3 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
 			);
 			productRefGroup = 5C32D5582C6591430054DCD7 /* Products */;
 			projectDirPath = "";
@@ -279,14 +306,18 @@
 				5C32D5AA2C65944C0054DCD7 /* AgoraManager+Token.swift in Sources */,
 				5C32D56C2C6591FA0054DCD7 /* AgoraManager+Permissions.swift in Sources */,
 				36F06AFA2C6C391B002FE004 /* UtilFunctions.swift in Sources */,
+				365EAAA92C759259002039E3 /* SttMessage.pb.swift in Sources */,
 				5C32D5B52C66DD090054DCD7 /* View+Extensions.swift in Sources */,
+				365EAAA72C759224002039E3 /* ServerNetworkingModel.swift in Sources */,
 				5C32D55D2C6591430054DCD7 /* ContentView.swift in Sources */,
 				5C32D5702C6592480054DCD7 /* AgoraVideoCanvasView.swift in Sources */,
 				36F06AFC2C6C3F64002FE004 /* UtilTestView.swift in Sources */,
+				365EAAB02C768A97002039E3 /* TranscriptionView.swift in Sources */,
+				365EAAB22C76A61F002039E3 /* StreamTextProcessor.swift in Sources */,
 				5C32D5AC2C66D72D0054DCD7 /* ChatView.swift in Sources */,
+				365EAAA52C75902C002039E3 /* SttMessage.proto in Sources */,
 				5C32D5B12C66DB550054DCD7 /* VisualEffectView.swift in Sources */,
 				5C32D59B2C6593450054DCD7 /* AppConfig.swift in Sources */,
-				367B88F72C6D687300ACA7B7 /* ServerNetworkingModel.swift in Sources */,
 				5C32D56F2C6592480054DCD7 /* AgoraManager.swift in Sources */,
 				5C32D5AE2C66DB260054DCD7 /* ToastView.swift in Sources */,
 				36F06AF82C6C37BC002FE004 /* NetworkManager.swift in Sources */,
@@ -510,6 +541,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		365EAAAA2C75939D002039E3 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.27.1;
+			};
+		};
 		5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AgoraIO/AgoraRtcEngine_iOS/";
@@ -521,6 +560,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		365EAAAB2C75939D002039E3 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 365EAAAA2C75939D002039E3 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+		365EAAAD2C75939D002039E3 /* SwiftProtobufPluginLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 365EAAAA2C75939D002039E3 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobufPluginLibrary;
+		};
 		5C32D5742C6592D60054DCD7 /* AIAEC */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5C32D5732C6592D60054DCD7 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;

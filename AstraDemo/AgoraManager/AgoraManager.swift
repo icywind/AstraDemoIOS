@@ -28,16 +28,21 @@ open class AgoraManager: NSObject, ObservableObject {
     /// The set of all users in the channel.
     @Published public var allUsers: Set<UInt> = []
     @Published public var userVideoPublishing: Dictionary<UInt, Bool> = [:]
-
+    @Published public var streamMessage : String = "";
+    
+    @Published var messages: [ChatMessage] = []
     @Published var label: String?
 
     /// Integer ID of the local user.
     @Published public var localUserId: UInt = 0
 
+    /// A processor that analyzes the text stream and place them in order
+    private lazy var streamTextProcessor = StreamTextProcessor(agoraManager: self)
+    
     // MARK: - Agora Engine Functions
-
     private var engine: AgoraRtcEngineKit?
-    /// The Agora RTC Engine Kit for the session.
+    @State private var streamId = 0
+    
     public var agoraEngine: AgoraRtcEngineKit {
         if let engine { return engine }
         let engine = setupEngine()
@@ -51,11 +56,17 @@ open class AgoraManager: NSObject, ObservableObject {
             eng.enableVideo()
         } else { eng.enableAudio() }
         eng.setClientRole(role)
+        
+        let config = AgoraDataStreamConfig()
+        let result = eng.createDataStream(&streamId, config: config)
+        if result != 0 {
+            print("ERROR, StreamCreate FAILED!")
+        }
         return eng
     }
     
     @discardableResult
-    open func startSession() async -> Int32 {
+    open func startSession(withAI : Bool) async -> Int32 {
         let channel = AppConfig.shared.channel
         var token = AppConfig.shared.rtcToken;
         
@@ -71,7 +82,7 @@ open class AgoraManager: NSObject, ObservableObject {
                 return -1;
             }
         }
-        let uid = AppConfig.shared.uid
+        let uid = AppConfig.shared.remoteStreamId
         var status : Int32 = 0
         switch AppConfig.shared.product {
         case .rtc:
@@ -85,7 +96,7 @@ open class AgoraManager: NSObject, ObservableObject {
             status = await joinVoiceCall(channel, token: token, uid: uid)
         }
         
-        if(status == 0) {
+        if(status == 0 && withAI) {
             do {
                 let _ = try await NetworkManager.ApiRequestStartService()
             } catch let error {
@@ -115,6 +126,15 @@ open class AgoraManager: NSObject, ObservableObject {
             } catch let error {
                 print ("Error: \(error.localizedDescription)")
             }
+        }
+    }
+    
+    open func sendMessage(message:String) -> Void {
+        let sendResult = engine?.sendStreamMessage(streamId, data: Data(message.utf8))
+        if sendResult != nil {
+            print("ERROR: sendMessage - \(String(describing: sendResult))")
+        } else {
+            print("Sent:\(message)")
         }
     }
     
@@ -348,6 +368,28 @@ extension AgoraManager: AgoraRtcEngineDelegate {
             break;
         default:
             break;
+        }
+    }
+    
+    open func rtcEngine(_ engine: AgoraRtcEngineKit, receiveStreamMessageFromUid uid: UInt, streamId: Int, data: Data) {
+        print("[DEBUG] receiveStreamMessageFromUid:\(uid) ")
+        do {
+            let stt = try Agora_SpeechToText_Text(serializedBytes: data)
+            var words : String = ""
+            var isFinal : Bool = false
+            for word in stt.words {
+                words += word.text;
+                if (word.isFinal) {
+                    isFinal = true
+                }
+            }
+            // let speaker = stt.uid == AppConfig.shared.remoteStreamId ? "You":"Agent"
+            // messages.append(ChatMessage(speaker:speaker, message: words))
+            let msg = IChatItem(userId: stt.uid, text: words, time: stt.time, isFinal: isFinal, isAgent: stt.uid
+                                != AppConfig.shared.remoteStreamId)
+            streamTextProcessor.addChatItem(item: msg)
+        } catch let error {
+            print ("Agora_SpeechToText_Text not decoded:" + error.localizedDescription)
         }
     }
 }

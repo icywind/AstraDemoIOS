@@ -9,6 +9,9 @@ import SwiftUI
 
 struct UtilTestView: View {
     @State private var ResultText = "Click me!"
+    @ObservedObject public var agoraManager = AgoraManager(appId: AppConfig.shared.appId, role: .broadcaster)
+    @State private var msgCount : Int = 0;
+    
     enum TestCase : String, CaseIterable {
        case RandomUserID = "RandomUserID",
             RandomChannel = "RandomChannel",
@@ -16,7 +19,8 @@ struct UtilTestView: View {
             TokenGen = "TokenGen",
             Start = "StartServer",
             Stop  = "StopServer",
-            Ping  = "PingSession"
+            Ping  = "PingSession",
+            Message = "SendMessage"
     }
     var body: some View {
         VStack {
@@ -93,7 +97,15 @@ struct UtilTestView: View {
             Task {
                 let _ = try await NetworkManager.ApiRequestPingService()
             }
-
+            break;
+        case .Message:
+            Task {
+                msgCount += 1
+                let _ = await agoraManager.startSession(withAI: false)
+                let msg = "Message " + String(msgCount)
+                agoraManager.sendMessage(message: msg)
+                let _ = agoraManager.stopSession()
+            }
             break;
         }
     }
