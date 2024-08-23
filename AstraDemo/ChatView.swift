@@ -37,11 +37,11 @@ struct ChatView: View {
                                     AgoraVideoCanvasView(manager: agoraManager, uid: uid)
                                         .aspectRatio(contentMode: .fit).cornerRadius(10)
                                 } else {
-                                    PlaceHolderUserView(user: uid)
+                                    PlaceHolderUserView(user: uid).aspectRatio(contentMode: .fit).cornerRadius(10)
                                 }
                             } else {
                                 // Placeholder
-                                PlaceHolderUserView(user: uid)
+                                PlaceHolderUserView(user: uid).aspectRatio(contentMode: .fit).cornerRadius(10)
                             }
                         }
                     }
@@ -53,7 +53,6 @@ struct ChatView: View {
             ).scaledToFit()
             ToastView(message: $agoraManager.label)
             .onReceive(timer) { time in
-                print("The time is now \(time)")
                 if (!_preview) {
                     agoraManager.pingSession()
                 }

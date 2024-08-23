@@ -56,6 +56,9 @@ struct Agora_SpeechToText_Text: Sendable {
 
   var culture: String = String()
 
+  /// pkg timestamp
+  var texttime: Int64 = 0
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -120,6 +123,7 @@ extension Agora_SpeechToText_Text: SwiftProtobuf.Message, SwiftProtobuf._Message
     13: .standard(proto: "data_type"),
     14: .same(proto: "trans"),
     15: .same(proto: "culture"),
+    16: .same(proto: "texttime"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -143,6 +147,7 @@ extension Agora_SpeechToText_Text: SwiftProtobuf.Message, SwiftProtobuf._Message
       case 13: try { try decoder.decodeSingularStringField(value: &self.dataType) }()
       case 14: try { try decoder.decodeRepeatedMessageField(value: &self.trans) }()
       case 15: try { try decoder.decodeSingularStringField(value: &self.culture) }()
+      case 16: try { try decoder.decodeSingularInt64Field(value: &self.texttime) }()
       default: break
       }
     }
@@ -194,6 +199,9 @@ extension Agora_SpeechToText_Text: SwiftProtobuf.Message, SwiftProtobuf._Message
     if !self.culture.isEmpty {
       try visitor.visitSingularStringField(value: self.culture, fieldNumber: 15)
     }
+    if self.texttime != 0 {
+      try visitor.visitSingularInt64Field(value: self.texttime, fieldNumber: 16)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -213,6 +221,7 @@ extension Agora_SpeechToText_Text: SwiftProtobuf.Message, SwiftProtobuf._Message
     if lhs.dataType != rhs.dataType {return false}
     if lhs.trans != rhs.trans {return false}
     if lhs.culture != rhs.culture {return false}
+    if lhs.texttime != rhs.texttime {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

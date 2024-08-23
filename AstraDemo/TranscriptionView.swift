@@ -14,10 +14,11 @@ struct ChatMessage: Identifiable {
 }
 
 struct TranscriptionView: View {
+    
     let messages: [ChatMessage]
     let speakerA: String
     let speakerB: String
-
+    
     var body: some View {
         List(messages) { message in
             HStack {
@@ -28,7 +29,7 @@ struct TranscriptionView: View {
                             .foregroundColor(.blue)
                         Text(message.message)
                             .font(.body)
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary) // automatically adjusted to dark/light
                     }
                     Spacer()
                 } else if message.speaker == speakerB {
@@ -39,7 +40,7 @@ struct TranscriptionView: View {
                             .foregroundColor(.green)
                         Text(message.message)
                             .font(.body)
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                     }
                 } else {
                     Spacer()

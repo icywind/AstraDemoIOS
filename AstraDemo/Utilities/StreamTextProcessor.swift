@@ -19,13 +19,12 @@ struct StreamTextProcessor {
     let agoraManager : AgoraManager
     var sttWords : [IChatItem] = []
     mutating func addChatItem(item:IChatItem) {
-        let lastFinal = sttWords.lastIndex(where: {item.userId == $0.userId && $0.isFinal} )
         let lastNonFinal = sttWords.lastIndex(where: {item.userId == $0.userId && !$0.isFinal} )
-        if (lastFinal != nil) {
+        if let lastFinal = sttWords.lastIndex(where: {item.userId == $0.userId && $0.isFinal} ) {
             // has last final item
-            if (item.time <= sttWords[lastFinal!].time) {
+            if (item.time <= sttWords[lastFinal].time) {
                 // discard
-                print("addChatItem, time < last final item, discard!:" + item.text)
+                // print("addChatItem, time < last final item, discard!:" + item.text)
                 return;
             } else {
                 // newer time stamp

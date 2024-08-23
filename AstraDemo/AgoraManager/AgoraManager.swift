@@ -372,7 +372,7 @@ extension AgoraManager: AgoraRtcEngineDelegate {
     }
     
     open func rtcEngine(_ engine: AgoraRtcEngineKit, receiveStreamMessageFromUid uid: UInt, streamId: Int, data: Data) {
-        print("[DEBUG] receiveStreamMessageFromUid:\(uid) ")
+        // print("[DEBUG] receiveStreamMessageFromUid:\(uid) ")
         do {
             let stt = try Agora_SpeechToText_Text(serializedBytes: data)
             var words : String = ""
@@ -383,9 +383,8 @@ extension AgoraManager: AgoraRtcEngineDelegate {
                     isFinal = true
                 }
             }
-            // let speaker = stt.uid == AppConfig.shared.remoteStreamId ? "You":"Agent"
-            // messages.append(ChatMessage(speaker:speaker, message: words))
-            let msg = IChatItem(userId: stt.uid, text: words, time: stt.time, isFinal: isFinal, isAgent: stt.uid
+            
+            let msg = IChatItem(userId: stt.uid, text: words, time: stt.texttime, isFinal: isFinal, isAgent: stt.uid
                                 != AppConfig.shared.remoteStreamId)
             streamTextProcessor.addChatItem(item: msg)
         } catch let error {

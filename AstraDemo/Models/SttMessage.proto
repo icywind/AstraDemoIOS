@@ -25,6 +25,7 @@ message Text {
   string data_type = 13; // transcribe ,translate
   repeated Translation trans = 14;
   string culture = 15;
+  int64 texttime = 16; // pkg timestamp
 }
 message Word {
   string text = 1;
