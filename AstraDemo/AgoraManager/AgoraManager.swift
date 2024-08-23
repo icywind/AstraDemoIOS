@@ -9,6 +9,7 @@
 import AgoraRtcKit
 import SwiftUI
 
+
 /// ``AgoraManager`` is a class that provides an interface to the Agora RTC Engine Kit.
 /// It conforms to the `ObservableObject` and `AgoraRtcEngineDelegate` protocols.
 ///
@@ -19,9 +20,9 @@ open class AgoraManager: NSObject, ObservableObject {
     // MARK: - Properties
 
     /// The Agora App ID for the session.
-    public let appId: String
+    let appId: String
     /// The client's role in the session.
-    public var role: AgoraClientRole = .audience {
+    var role: AgoraClientRole = .audience {
         didSet { agoraEngine.setClientRole(role) }
     }
 
@@ -30,11 +31,12 @@ open class AgoraManager: NSObject, ObservableObject {
     @Published public var userVideoPublishing: Dictionary<UInt, Bool> = [:]
     @Published public var streamMessage : String = "";
     
+    @Published var soundSamples = [Float](repeating: .zero, count: VisualizerSamples)
     @Published var messages: [ChatMessage] = []
     @Published var label: String?
 
     /// Integer ID of the local user.
-    @Published public var localUserId: UInt = 0
+    public var localUserId: UInt = 0
 
     /// A processor that analyzes the text stream and place them in order
     private lazy var streamTextProcessor = StreamTextProcessor(agoraManager: self)
@@ -42,6 +44,9 @@ open class AgoraManager: NSObject, ObservableObject {
     // MARK: - Agora Engine Functions
     private var engine: AgoraRtcEngineKit?
     @State private var streamId = 0
+    
+    private var currentSample : Int = 0
+    
     
     public var agoraEngine: AgoraRtcEngineKit {
         if let engine { return engine }
@@ -62,6 +67,10 @@ open class AgoraManager: NSObject, ObservableObject {
         if result != 0 {
             print("ERROR, StreamCreate FAILED!")
         }
+        eng.setAudioFrameDelegate(self)
+        // eng.setMixedAudioFrameParametersWithSampleRate(44100, channel: 1, samplesPerCall: 4410)
+        //eng.setPlaybackAudioFrameParametersWithSampleRate(44100, channel: 1, mode: .readWrite, samplesPerCall: 4410)
+        eng.setPlaybackAudioFrameBeforeMixingParametersWithSampleRate(44100, channel: 1)
         return eng
     }
     
@@ -390,5 +399,33 @@ extension AgoraManager: AgoraRtcEngineDelegate {
         } catch let error {
             print ("Agora_SpeechToText_Text not decoded:" + error.localizedDescription)
         }
+    }
+}
+
+extension AgoraManager: AgoraAudioFrameDelegate {
+    open func onPlaybackAudioFrame(beforeMixing frame: AgoraAudioFrame, channelId: String, uid: UInt) -> Bool {
+        /** The buffer of the sample audio data. When the audio frame uses a stereo
+         channel, the data buffer is interleaved. The size of the data buffer is as
+         follows: `buffer` = `samplesPerChannel` × `channels` × `bytesPerSample`.
+         */
+        let bufferBytes = frame.samplesPerChannel * frame.channels * frame.bytesPerSample
+        if let buffer = frame.buffer {
+            let sampleArray = mapBufferToFloatArray(buffer: buffer, bufferSize: bufferBytes)
+            let normalizedSamples = normalizeFrequencies(frequencies: sampleArray)
+            let energy = sqrt(normalizedSamples.reduce(0) { $0 + $1 * $1 })
+            if (energy > 28) {
+                print("energy = \(energy)")
+                printFloat(floatArray: sampleArray, total: 32)
+                print("------------------------------")
+                printFloat(floatArray: normalizedSamples, total: 32)
+            }
+            Task {
+                await MainActor.run {
+                    self.soundSamples[currentSample] = energy
+                    currentSample = (currentSample+1)%VisualizerSamples
+                }
+            }
+        }
+        return true
     }
 }

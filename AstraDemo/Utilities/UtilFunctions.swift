@@ -43,11 +43,32 @@ func normalizeFrequencies(frequencies: [Float]) -> [Float] {
     }
 
     return frequencies.map { value in
-        if value == -Float.infinity {
+        if value == -Float.infinity || value.isNaN || value.isZero {
             return 0
         }
         return normalizeDb(value: value)
     }
+}
+
+func mapBufferToFloatArray(buffer: UnsafeRawPointer, bufferSize: Int) -> [Float32] {
+    // Step 1: Cast the void* pointer to an UnsafePointer<Float32>
+    let floatPointer = buffer.assumingMemoryBound(to: Float32.self)
+    
+    // Step 2: Create an UnsafeBufferPointer
+    let floatBuffer = UnsafeBufferPointer(start: floatPointer, count: bufferSize)
+    
+    // Step 3: Convert to a Swift array
+    return Array(floatBuffer)
+}
+
+func printFloat(floatArray: [Float], total: Int) {
+    for i in 0..<min(total, floatArray.count) {
+        if i % 8 == 0 && i != 0 {
+            print() // New line after every 8 elements
+        }
+        print(String(format: "%.2f", floatArray[i]), terminator: " ")
+    }
+    print() // Final new line
 }
 
 func genUUID() -> String {

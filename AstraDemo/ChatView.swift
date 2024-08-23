@@ -41,7 +41,11 @@ struct ChatView: View {
                                 }
                             } else {
                                 // Placeholder
-                                PlaceHolderUserView(user: uid).aspectRatio(contentMode: .fit).cornerRadius(10)
+                                if (uid == AppConfig.shared.agentUid) {
+                                    SoundVisualizer(agora: agoraManager)
+                                } else {
+                                    PlaceHolderUserView(user: uid).aspectRatio(contentMode: .fit).cornerRadius(10)
+                                }
                             }
                         }
                     }

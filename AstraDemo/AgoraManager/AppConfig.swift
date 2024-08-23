@@ -27,7 +27,7 @@ public struct AppConfig: Codable {
     }()
 
     var remoteStreamId: UInt
-    
+    var agentUid : UInt     // expected Agent UID
     var agoraAsrLanguage: String
     var openaiProxyUrl: String?
     var voiceType: VoiceType
