@@ -68,9 +68,6 @@ open class NetworkManager {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let body = try JSONEncoder().encode(data)
-        let str = String(data:body, encoding: .utf8)
-        print(str)
-        
         request.httpBody = body
         
         return try await withCheckedThrowingContinuation { continuation in
