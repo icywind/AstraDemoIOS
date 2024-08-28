@@ -22,21 +22,34 @@ struct AgoraRTCTokenRequest : Codable {
     }
 }
 
+struct ServerStartProperties : Codable {
+    let agoraRtc : [String:String]
+    let openaiChatGPT : [String:String]
+    let azureTTS : [String:String]
+    enum CodingKeys: String, CodingKey {
+        case agoraRtc = "agora_rtc"
+        case openaiChatGPT = "openai_chatgpt"
+        case azureTTS = "azure_tts"
+    }
+}
+
 struct ServiceStartRequest: Codable {
     let requestId: String
     let channelName: String
-    let agoraAsrLanguage: String?
     let openaiProxyUrl: String?
     let remoteStreamId: UInt
+    let graphName : String
     let voiceType: String
+    let properties : ServerStartProperties
 
     enum CodingKeys: String, CodingKey {
         case requestId = "request_id"
         case channelName = "channel_name"
-        case agoraAsrLanguage = "agora_asr_language"
         case openaiProxyUrl = "openai_proxy_url"
         case remoteStreamId = "remote_stream_id"
+        case graphName = "graph_name"
         case voiceType = "voice_type"
+        case properties = "properties"
     }
 }
 
