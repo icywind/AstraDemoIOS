@@ -25,12 +25,22 @@ open class NetworkManager {
     
     static func ApiRequestStartService() async throws -> Data {
         let config = AppConfig.shared;
+        let startProperties = ServerStartProperties(agoraRtc: ["agora_asr_language": "en-US"],
+                                                    openaiChatGPT: [
+                                                        "model": "gpt-4o",
+                                                        "greeting": "ASTRA agent connected. Happy to chat with you today.",
+                                                        "checking_vision_text_items": "[\"Let me take a look...\",\"Let me check your camera...\",\"Please wait for a second...\"]"
+                                                    ],
+                                                    azureTTS: ["azure_synthesis_voice_name": "en-US-BrianNeural"])
         let data = ServiceStartRequest(requestId: genUUID(),
                                        channelName: config.channel,
-                                       agoraAsrLanguage: config.agoraAsrLanguage,
                                        openaiProxyUrl: config.openaiProxyUrl,
                                        remoteStreamId: config.remoteStreamId,
-                                       voiceType: config.voiceType.description)
+                                       graphName : "camera.va.openai.azure",
+                                       voiceType: config.voiceType.description,
+                                       properties: startProperties
+        )
+        
         let endpoint = config.serverBaseURL + "/start"
         return try await ServerApiRequest(apiurl: endpoint, data: data)
     }
@@ -57,7 +67,11 @@ open class NetworkManager {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-            request.httpBody = try JSONEncoder().encode(data)
+        let body = try JSONEncoder().encode(data)
+        let str = String(data:body, encoding: .utf8)
+        print(str)
+        
+        request.httpBody = body
         
         return try await withCheckedThrowingContinuation { continuation in
             let task = URLSession.shared.dataTask(with: request) { (data1, response, error) in
