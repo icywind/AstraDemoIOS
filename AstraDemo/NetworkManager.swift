@@ -67,7 +67,11 @@ open class NetworkManager {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-            request.httpBody = try JSONEncoder().encode(data)
+        let body = try JSONEncoder().encode(data)
+        let str = String(data:body, encoding: .utf8)
+        print(str)
+        
+        request.httpBody = body
         
         return try await withCheckedThrowingContinuation { continuation in
             let task = URLSession.shared.dataTask(with: request) { (data1, response, error) in
