@@ -383,21 +383,24 @@ extension AgoraManager: AgoraRtcEngineDelegate {
     open func rtcEngine(_ engine: AgoraRtcEngineKit, receiveStreamMessageFromUid uid: UInt, streamId: Int, data: Data) {
         // print("[DEBUG] receiveStreamMessageFromUid:\(uid) ")
         do {
-            let stt = try Agora_SpeechToText_Text(serializedBytes: data)
-            var words : String = ""
-            var isFinal : Bool = false
-            for word in stt.words {
-                words += word.text;
-                if (word.isFinal) {
-                    isFinal = true
-                }
+            //            let stt = try Agora_SpeechToText_Text(serializedBytes: data)
+            //            var words : String = ""
+            //            var isFinal : Bool = false
+            //            for word in stt.words {
+            //                words += word.text;
+            //                if (word.isFinal) {
+            //                    isFinal = true
+            //                }
+            //            }
+            if let str = String(data: data, encoding: .utf8) {
+                print("Successfully decoded: \(str) uid:\(uid)")
             }
             
-            let msg = IChatItem(userId: stt.uid, text: words, time: stt.texttime, isFinal: isFinal, isAgent: stt.uid
-                                != AppConfig.shared.remoteStreamId)
+            let stt = try JSONDecoder().decode(STTStreamText.self, from: data)
+            let msg = IChatItem(userId: uid, text: stt.text, time: stt.textTS, isFinal: stt.isFinal, isAgent: 0 == stt.streamID)
             streamTextProcessor.addChatItem(item: msg)
         } catch let error {
-            print ("Agora_SpeechToText_Text not decoded:" + error.localizedDescription)
+            print("failed to parsee textStream")
         }
     }
 }
