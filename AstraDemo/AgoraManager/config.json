@@ -9,5 +9,5 @@
     "agoraAsrLanguage": "en-US",
     "openaiProxyUrl": "",
     "voiceType": "male",
-    "serverBaseURL":"http://192.168.12.15:8080"
+    "serverBaseURL":"https://astra.agoraguru.net"
 }

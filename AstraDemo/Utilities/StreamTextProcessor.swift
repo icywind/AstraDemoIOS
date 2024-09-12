@@ -8,7 +8,7 @@
 import Foundation
 
 struct IChatItem {
-    let userId : Int64
+    let userId : UInt
     let text : String
     let time : Int64
     let isFinal : Bool

@@ -103,3 +103,18 @@ struct TokenDataClass: Codable {
     }
 }
 
+struct STTStreamText: Codable {
+    let text: String
+    let isFinal: Bool
+    let streamID: Int
+    let dataType: String
+    let textTS: Int64
+
+    enum CodingKeys: String, CodingKey {
+        case text
+        case isFinal = "is_final"
+        case streamID = "stream_id"
+        case dataType = "data_type"
+        case textTS = "text_ts"
+    }
+}
